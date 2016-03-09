@@ -1,11 +1,13 @@
 package hello;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Customer {
 
     @Id
@@ -13,6 +15,8 @@ public class Customer {
     private long id;
     private String firstName;
     private String lastName;
+    @CreatedDate
+    private LocalDateTime createDate;
 
     protected Customer() {
     }
@@ -24,9 +28,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        return String.format(
-                "Customer[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", createDate=" + createDate +
+                '}';
     }
-
 }
