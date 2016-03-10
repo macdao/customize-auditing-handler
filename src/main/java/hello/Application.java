@@ -1,6 +1,6 @@
 package hello;
 
-import hello.auditing.jpaAuditingHandlerRegistrar;
+import hello.auditing.JpaAuditingHandlerRegistrar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@Import(jpaAuditingHandlerRegistrar.class)
+@Import(JpaAuditingHandlerRegistrar.class)
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
